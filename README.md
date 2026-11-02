@@ -32,6 +32,26 @@ npm install
 npm run dev
 ```
 
+## GitHub Pages'te yayınlama
+
+Bu proje GitHub Pages'te yayınlanmaya uygun statik çıktı üretir. `main` dalına
+her gönderim `.github/workflows/pages.yml` iş akışını çalıştırır. İlk yayın için
+GitHub deposunda **Settings → Pages → Build and deployment → Source** alanını
+**GitHub Actions** olarak seçin. İş akışı tamamlanınca adres şu biçimde olur:
+
+```text
+https://wafatavil.github.io/hospital/
+```
+
+`output: "export"` ayarı Next.js uygulamasını statik HTML/CSS/JS dosyalarına
+dönüştürür; görseller bu nedenle optimize edilmeden sunulur. İletişim formu
+tarayıcıdan WhatsApp mesaj taslağı açar, sunucu/API gerektirmez. Mobilde adresi
+açarak test edebilirsiniz. Depo özel (private) ise GitHub Pages erişim
+kısıtlamaları planınıza bağlı olabilir; herkese açık test bağlantısı için
+deponun Pages tarafından yayınlanabildiğini kontrol edin.
+
+Özel alan adı kullanırken `.github/workflows/pages.yml` içindeki `NEXT_PUBLIC_BASE_PATH` değişkenini kaldırın veya boş bırakın. `basePath` boşken site kök dizinde yayınlanır.
+
 ## Komutlar
 
 ```sh
@@ -81,9 +101,3 @@ public/
 - Gizlilik, açık rıza ve sağlık iletişimi metinlerini yayından önce yetkili danışmanlarla gözden geçirin.
 - Gerçek alan adı belirlendiğinde metadata, Open Graph, canonical URL, sitemap ve robots ayarlarını tamamlayın.
 - Yayın öncesi `npm run lint` ve `npm run build` komutlarını çalıştırın.
-
-## GitHub Pages yayını
-
-Depo adı `hospital` olduğu için yayın adresi `https://wafatavil.github.io/hospital/` olacaktır. `.github/workflows/deploy.yml`, `main` dalına push edildiğinde siteyi statik olarak derleyip GitHub Pages'e dağıtır.
-
-İlk yayın için GitHub deposunda **Settings → Pages → Build and deployment → Source** alanından **GitHub Actions** seçin. Ardından Actions sekmesindeki `Deploy Next.js to GitHub Pages` iş akışının tamamlanmasını bekleyin. Yayın adresi Settings → Pages bölümünde görünür.
