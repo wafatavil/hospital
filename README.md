@@ -32,6 +32,29 @@ npm install
 npm run dev
 ```
 
+## GitHub Pages'te yayınlama
+
+Bu proje GitHub Pages'te yayınlanmaya uygun statik çıktı üretir. `main` dalına
+her gönderim `.github/workflows/pages.yml` iş akışını çalıştırır. İlk yayın için
+GitHub deposunda **Settings → Pages → Build and deployment → Source** alanını
+**GitHub Actions** olarak seçin. İş akışı tamamlanınca adres şu biçimde olur:
+
+```text
+https://wafatavil.github.io/hospital/
+```
+
+`output: "export"` ayarı Next.js uygulamasını statik HTML/CSS/JS dosyalarına
+dönüştürür; görseller bu nedenle optimize edilmeden sunulur. İletişim formu
+tarayıcıdan WhatsApp mesaj taslağı açar, sunucu/API gerektirmez. Mobilde adresi
+açarak test edebilirsiniz. Depo özel (private) ise GitHub Pages erişim
+kısıtlamaları planınıza bağlı olabilir; herkese açık test bağlantısı için
+deponun Pages tarafından yayınlanabildiğini kontrol edin.
+
+Özel alan adına geçerken `next.config.ts` içindeki `basePath` değerinin boş
+olması gerekir; `.github/workflows/pages.yml` dosyasındaki
+`NEXT_BASE_PATH: /${{ github.event.repository.name }}` satırını
+`NEXT_BASE_PATH: ""` olarak değiştirin ve yeni derlemeyi yayınlayın.
+
 ## Komutlar
 
 ```sh
