@@ -1,53 +1,83 @@
-# Nöroşirürji kişisel web sitesi
+# Op. Dr. Abdulhalim Tavil — Kişisel Web Sitesi
 
-Next.js App Router, TypeScript, Tailwind CSS v4, shadcn/ui kalıpları (Radix UI) ve Framer Motion ile hazırlanmış Türkçe, mobil uyumlu web sitesi başlangıç projesi.
+Beyin ve omurilik cerrahisi alanında çalışan Op. Dr. Abdulhalim Tavil için hazırlanmış, mobil uyumlu ve üç dil destekli kişisel web sitesi.
 
-## Başlangıç
+## Teknolojiler
 
-1. Node.js 20.9 veya üzerini kurun.
-2. PowerShell'de proje klasöründe npm.cmd install çalıştırın. Windows PowerShell npm.ps1 dosyasını engellerse npm.cmd kullanın.
-3. Geliştirme sunucusunu npm.cmd run dev komutuyla başlatın.
-4. http://localhost:3000 adresini açın.
+- Next.js App Router ve React
+- TypeScript
+- Tailwind CSS v4
+- Radix UI tabanlı shadcn/ui tarzı arayüz bileşenleri
+- Framer Motion
 
-Yayın derlemesi için `npm.cmd run build`, üretim sunucusu için `npm.cmd start` komutlarını kullanın.
+## Gereksinimler
+
+Node.js 20.9 veya üzeri ve npm gerekir.
+
+## Yerel geliştirme
+
+Windows PowerShell'de `npm` komutu çalıştırma politikası nedeniyle engellenirse `npm.cmd` kullanın:
+
+```powershell
+npm.cmd install
+npm.cmd run dev
+```
+
+Ardından [http://localhost:3000](http://localhost:3000) adresini açın. Geliştirme sunucusunu durdurmak için `Ctrl+C` tuşlarına basın.
+
+Diğer sistemlerde:
+
+```sh
+npm install
+npm run dev
+```
+
+## Komutlar
+
+```sh
+npm run dev    # Yerel geliştirme sunucusu
+npm run lint   # ESLint kontrolü
+npm run build  # Yayına hazırlık derlemesi
+npm run start  # Derlenmiş uygulamayı çalıştırma
+```
 
 ## Proje yapısı
 
 ```text
 src/
   app/
-    globals.css          # Tailwind v4, açık/koyu tema değişkenleri
-    layout.tsx           # Türkçe belge, SEO metaverisi ve tema sağlayıcısı
-    page.tsx             # Ana sayfa bölümleri
+    globals.css       # Tema değişkenleri ve global stiller
+    layout.tsx        # Ana layout ve SEO metaverileri
+    page.tsx          # Ana sayfa ve içerik bölümleri
   components/
-    contact-form.tsx     # İletişim/randevu formu ve dosya alanı
-    language-provider.tsx # TR/EN/AR metinleri, dil tercihi ve RTL yönü
-    language-select.tsx   # Erişilebilir dil seçici
-    reveal.tsx           # Kaydırma görünüm animasyonları (Framer Motion)
-    site-header.tsx      # Responsive gezinme
-    specialties.tsx      # Uzmanlık kartları ve detay penceresi
+    contact-form.tsx  # WhatsApp mesajı oluşturan iletişim formu
+    language-provider.tsx
+    language-select.tsx
+    reveal.tsx        # Görünür olma animasyonları
+    site-header.tsx
+    specialties.tsx   # Uzmanlık alanları ve detay penceresi
     theme-provider.tsx
     theme-toggle.tsx
-    ui/                  # shadcn/ui düzeninde erişilebilir bileşenler
+    ui/               # Arayüz bileşenleri
   lib/
-    utils.ts             # cn yardımcı fonksiyonu
+    messages.ts       # Türkçe, İngilizce ve Arapça metinler
+    utils.ts
+public/
+  images/              # Sitede kullanılan görseller
 ```
 
-## Kod biçimi
+## Özellikler
 
-- Girintiler iki boşluk ve dosya sonları LF kullanır; bu kurallar `.editorconfig` içinde tanımlıdır.
-- Bileşenleri kısa paragraflar halinde yazın. Uzun JSX yapılarında her öğeyi ayrı satırda tutun.
-- Dosya ve bileşen adlarını yaptıkları işe göre açıkça seçin.
-- Site dili üst menüden Türkçe, English veya العربية olarak değiştirilebilir. Seçim tarayıcıda hatırlanır; Arapça görünüm sağdan sola akar.
+- Türkçe, İngilizce ve Arapça dil seçenekleri; Arapça için sağdan sola görünüm
+- Açık/koyu tema
+- Mobil uyumlu gezinme ve sayfa düzeni
+- Uzmanlık alanı detay pencereleri ve sık sorulan sorular
+- İletişim formu bilgileri WhatsApp'ta gönderime hazır mesaj olarak açar
 
-## Gerçek siteye uyarlama
+## Yayına almadan önce
 
-- `src/app/page.tsx` içindeki klinik adresi ve randevu saatlerini kesin bilgilerle güncelleyin.
-- Hero fotoğrafını izinli, hekimin gerçek portresiyle değiştirin. Görselin alt metnini de güncelleyin.
-- Harita arama bağlantısını kesin klinik adresiyle eşleşen bir konum bağlantısına dönüştürün.
-- İletişim formu WhatsApp'ta gönderime hazır bir mesaj açar; form verisini sunucuda saklamaz ve dosya ekini iletmez. Canlı kullanım öncesinde KVKK metinlerini, kullanıcı rızasını ve veri işleme akışını gözden geçirin.
-- İçerikler genel bilgilendirmedir, kişisel tanı/tedavi önerisi değildir. Yayına almadan önce hekim ve mevzuat danışmanı tarafından gözden geçirilmelidir.
-
-## SEO ve erişilebilirlik
-
-Sayfa Türkçe dil işareti, açıklayıcı başlık/açıklama, Open Graph metaverisi ve bölüm hiyerarşisi içerir. Klavye odak stilleri, skip link, semantik bölüm etiketleri, form etiketleri ve mobil menü durumu eklenmiştir. Gerçek alan adı eklendikten sonra canonical, Open Graph görseli, sitemap, robots ve yapılandırılmış veri doğrulanmış klinik bilgileriyle tamamlanmalıdır.
+- Hekim özgeçmişi, kurum, telefon, görseller ve bütün çevirileri doğrulayın.
+- Form WhatsApp'ta mesaj taslağı açar; mesajı kullanıcı WhatsApp üzerinden kendisi gönderir. Dosya yükleme ve dosya gönderimi desteklenmez.
+- Gizlilik, açık rıza ve sağlık iletişimi metinlerini yayından önce yetkili danışmanlarla gözden geçirin.
+- Gerçek alan adı belirlendiğinde metadata, Open Graph, canonical URL, sitemap ve robots ayarlarını tamamlayın.
+- Yayın öncesi `npm run lint` ve `npm run build` komutlarını çalıştırın.
