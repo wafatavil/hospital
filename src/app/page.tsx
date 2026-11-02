@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const patientArticleIcons = [CalendarDays, BookOpen, ShieldCheck];
 
 type SectionIntroProps = {
@@ -115,7 +116,7 @@ function HeroSection() {
 
             <div className="relative aspect-[.96] overflow-hidden rounded-[2rem] bg-[#e7f1f3]">
               <Image
-                src="/images/abdulhalim-tavil-surgery.png"
+                src={`${basePath}/images/abdulhalim-tavil-surgery.png`}
                 alt={text.hero.imageAlt}
                 fill
                 priority
@@ -226,7 +227,7 @@ function AboutSection() {
 
                 <div className="relative min-h-[260px] overflow-hidden rounded-2xl bg-secondary">
                   <Image
-                    src="/images/abdulhalim-tavil-microscope.png"
+                    src={`${basePath}/images/abdulhalim-tavil-microscope.png`}
                     alt={text.about.imageAlt}
                     fill
                     sizes="(max-width: 640px) 90vw, (max-width: 1024px) 40vw, 320px"

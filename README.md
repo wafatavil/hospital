@@ -81,3 +81,9 @@ public/
 - Gizlilik, açık rıza ve sağlık iletişimi metinlerini yayından önce yetkili danışmanlarla gözden geçirin.
 - Gerçek alan adı belirlendiğinde metadata, Open Graph, canonical URL, sitemap ve robots ayarlarını tamamlayın.
 - Yayın öncesi `npm run lint` ve `npm run build` komutlarını çalıştırın.
+
+## GitHub Pages yayını
+
+Depo adı `hospital` olduğu için yayın adresi `https://wafatavil.github.io/hospital/` olacaktır. `.github/workflows/deploy.yml`, `main` dalına push edildiğinde siteyi statik olarak derleyip GitHub Pages'e dağıtır.
+
+İlk yayın için GitHub deposunda **Settings → Pages → Build and deployment → Source** alanından **GitHub Actions** seçin. Ardından Actions sekmesindeki `Deploy Next.js to GitHub Pages` iş akışının tamamlanmasını bekleyin. Yayın adresi Settings → Pages bölümünde görünür.
